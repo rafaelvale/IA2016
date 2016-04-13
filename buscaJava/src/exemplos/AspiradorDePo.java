@@ -19,7 +19,7 @@ public class AspiradorDePo implements Estado{
 	}
 	
 	public boolean ehMeta(){
-		if(this.ladoEsquerdo==Casa.LIMPO && this.ladoDireito==Casa.LIMPO)
+		if(this.ladoEsquerdo==Apto.LIMPO && this.ladoDireito==Apto.LIMPO)
 			return true;
 		else
 			return false;
@@ -30,15 +30,15 @@ public class AspiradorDePo implements Estado{
 	public List<Estado> sucessores(){
 		List<Estado> sucessores = new LinkedList<Estado>();
 		//mover para a esquerda
-		sucessores.add(new AspiradorDePo(Casa.ESQUERDA,this.ladoDireito, this.ladoEsquerdo,"Para_a_esquerda"));
+		sucessores.add(new AspiradorDePo(Apto.ESQUERDA,this.ladoDireito, this.ladoEsquerdo,"Para_a_esquerda"));
 		//mover para a direita
-		sucessores.add(new AspiradorDePo(Casa.DIREITA, this.ladoDireito, this.ladoEsquerdo,"Para_a_direita"));
+		sucessores.add(new AspiradorDePo(Apto.DIREITA, this.ladoDireito, this.ladoEsquerdo,"Para_a_direita"));
 		
 		if
-		(this.posicao ==Casa.DIREITA) sucessores.add(new AspiradorDePo(this.posicao,Casa.LIMPO,this.ladoEsquerdo
+		(this.posicao ==Apto.DIREITA) sucessores.add(new AspiradorDePo(this.posicao,Apto.LIMPO,this.ladoEsquerdo
 				,"Limpar o quarto da direita"));
 		else
-			sucessores.add(new AspiradorDePo(this.posicao, this.ladoDireito, Casa.LIMPO
+			sucessores.add(new AspiradorDePo(this.posicao, this.ladoDireito, Apto.LIMPO
 					,"Limpar o quarto da esquerda"));
 		
 		return sucessores;
@@ -54,11 +54,11 @@ public class AspiradorDePo implements Estado{
 		
 	}
 	
-	private int ladoEsquerdo = Casa.SUJO;
+	private int ladoEsquerdo = Apto.SUJO;
 	
-	private int ladoDireito = Casa.SUJO;
+	private int ladoDireito = Apto.SUJO;
 	
-	private int posicao = Casa.DIREITA;
+	private int posicao = Apto.DIREITA;
 	
 	private String op;
 	
@@ -69,7 +69,7 @@ public class AspiradorDePo implements Estado{
 	
 	
 	public static void main(String args[]){
-		AspiradorDePo inicial = new AspiradorDePo(Casa.DIREITA, Casa.SUJO, Casa.SUJO, "");
+		AspiradorDePo inicial = new AspiradorDePo(Apto.DIREITA, Apto.SUJO, Apto.SUJO, "");
 		
 		System.out.println("busca em largura");
 		
@@ -81,7 +81,7 @@ public class AspiradorDePo implements Estado{
 			System.out.println("solucao:\n"+ n.montaCaminho()+"\n\n");
 		}
 		
-		AspiradorDePo inicial2 = new AspiradorDePo(Casa.DIREITA, Casa.SUJO, Casa.SUJO,"");
+		AspiradorDePo inicial2 = new AspiradorDePo(Apto.DIREITA, Apto.SUJO, Apto.SUJO,"");
 		
 		System.out.println("busca em profundidade");
 		
@@ -94,7 +94,7 @@ public class AspiradorDePo implements Estado{
 			System.out.println("solucao:\n"+ n2.montaCaminho()+"\n\n");
 		}
 		
-		AspiradorDePo inicial3 = new AspiradorDePo(Casa.DIREITA, Casa.SUJO, Casa.SUJO,"");
+		AspiradorDePo inicial3 = new AspiradorDePo(Apto.DIREITA, Apto.SUJO, Apto.SUJO,"");
 		
 		Nodo n3 = new BuscaIterativo().busca(inicial3);
 		
